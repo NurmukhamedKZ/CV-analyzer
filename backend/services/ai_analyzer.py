@@ -62,11 +62,11 @@ class AIAnalyzer:
                     },
                     {"role": "user", "content": prompt}
                 ],
-                temperature=0.3,
+                temperature=0.2,
             )
             
             response_text = response.choices[0].message.content
-            logger.info(f"OpenAI answer: {response_text}")
+            
             
             # Extract JSON
             json_match = re.search(r'\{.*\}', response_text, re.DOTALL)
@@ -145,7 +145,9 @@ class AIAnalyzer:
     
     def _create_analysis_prompt(self, cv_text: str, job_description: str) -> str:
         """Create the prompt for OpenAI analysis"""
-        return f"""Analyze this CV against the job description and provide comprehensive feedback in the following JSON format:
+        return f"""
+Analyze this CV against the job description and provide comprehensive feedback in the following JSON format,
+
 
 CV Text:
 {cv_text[:3000]}...

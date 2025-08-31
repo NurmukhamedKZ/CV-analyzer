@@ -4,6 +4,7 @@ from fastapi.responses import JSONResponse
 import uvicorn
 from dotenv import load_dotenv
 import os
+import signal
 
 # Import routers
 from routes.cv_analysis import router as cv_router
@@ -42,7 +43,7 @@ async def root():
 # Health check endpoint
 @app.get("/health")
 async def health_check():
-    return {"status": "healthy", "message": "API is running"}
+    return {"status": "healthy and working", "message": "API is running"}
 
 # Error handlers
 @app.exception_handler(HTTPException)
@@ -59,11 +60,20 @@ async def general_exception_handler(request, exc):
         content={"error": "Internal server error", "details": str(exc)}
     )
 
+
+@app.get("/shutdown")
+async def shutdown_server():
+    # Get the PID of the current process (which is the Uvicorn server)
+    pid = os.getpid()
+    # Send a SIGINT signal to gracefully shut down
+    os.kill(pid, signal.SIGINT)
+    return {"message": "Server is shutting down..."}
+
 if __name__ == "__main__":
     uvicorn.run(
         "main:app",
         host="0.0.0.0",
         port=8000,
         reload=True,
-        log_level="info"
+        log_level="info",
     )

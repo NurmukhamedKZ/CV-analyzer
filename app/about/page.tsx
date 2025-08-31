@@ -117,7 +117,7 @@ export default function AboutPage() {
                 <p className="text-gray-600 text-sm">Full-stack engineers building the future</p>
               </div>
               <div className="text-center">
-                <div className="w-20 h-20 bg-gray-200 rounded-full mx-auto mb-4"></div>
+                <div className="w-20 h-20 bg-gray-200 rounded-full mx-auto mb-4"><img src='photos/nureke-car.png'></img></div>
                 <h3 className="font-semibold text-gray-900">Design Team</h3>
                 <p className="text-gray-600 text-sm">UX/UI experts crafting beautiful experiences</p>
               </div>

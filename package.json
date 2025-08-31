@@ -1,0 +1,43 @@
+{
+  "name": "ai-cv-checker",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "14.0.4",
+    "react": "^18",
+    "react-dom": "^18",
+    "typescript": "^5",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "tailwindcss": "^3.3.0",
+    "tailwindcss-animate": "^1.0.7",
+    "autoprefixer": "^10.0.1",
+    "postcss": "^8",
+    "pdf-parse": "^1.1.1",
+    "docx": "^8.5.0",
+    "openai": "^4.20.1",
+    "next-auth": "^4.24.5",
+    "@next-auth/prisma-adapter": "^1.0.7",
+    "prisma": "^5.7.1",
+    "@prisma/client": "^5.7.1",
+    "multer": "^1.4.5-lts.1",
+    "@types/multer": "^1.4.11",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.0.0",
+    "tailwind-merge": "^2.0.0",
+    "lucide-react": "^0.294.0",
+    "react-dropzone": "^14.2.3",
+    "@types/pdf-parse": "^1.1.4"
+  },
+  "devDependencies": {
+    "eslint": "^8",
+    "eslint-config-next": "14.0.4"
+  }
+}

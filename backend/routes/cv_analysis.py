@@ -15,6 +15,7 @@ from services.file_validator import FileValidator
 
 # Import models
 from models.cv_analysis import CVAnalysisRequest, CVAnalysisResponse
+from database.model import get_session, CVFile, AnalysisResult, User
 
 # Setup logging
 logging.basicConfig(level=logging.INFO)
@@ -81,6 +82,37 @@ async def analyze_cv(
                 "analysis_timestamp": datetime.utcnow().isoformat(),
                 "user_id": user_id
             }
+
+            # Persist CV metadata and analysis to the database
+            try:
+                with get_session() as session:
+                    cv_row = CVFile(
+                        user_id=int(user_id) if user_id and user_id.isdigit() else None,
+                        filename=cv_file.filename,
+                        file_size=cv_file.size,
+                        file_type=cv_file.content_type,
+                        file_content=cv_text
+                    )
+                    session.add(cv_row)
+                    session.commit()
+                    session.refresh(cv_row)
+
+                    analysis_row = AnalysisResult(
+                        user_id=int(user_id) if user_id and user_id.isdigit() else None,
+                        cv_id=cv_row.id,
+                        job_description=job_description,
+                        analysis=analysis_result,
+                        overall_score=analysis_result.get("overall_score")
+                    )
+                    session.add(analysis_row)
+                    session.commit()
+                    session.refresh(analysis_row)
+
+                    # attach persisted IDs to response metadata
+                    analysis_result["metadata"]["cv_id"] = cv_row.id
+                    analysis_result["metadata"]["analysis_id"] = analysis_row.id
+            except Exception as e:
+                logger.error(f"Failed to save analysis to DB: {str(e)}")
             
             logger.info("CV analysis completed successfully")
             return analysis_result

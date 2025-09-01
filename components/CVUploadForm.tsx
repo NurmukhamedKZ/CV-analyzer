@@ -168,7 +168,7 @@ export default function CVUploadForm({ setIsAnalyzing }: CVUploadFormProps) {
 
         {/* Disclaimer */}
         <p className="text-xs text-gray-500 text-center">
-          By uploading your CV, you agree that it will be processed for analysis purposes only and will not be stored permanently.
+          By uploading your CV, you agree that it will be processed for analysis purposes only.
         </p>
       </form>
     </div>

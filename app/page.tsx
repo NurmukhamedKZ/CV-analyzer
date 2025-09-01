@@ -68,13 +68,13 @@ export default function HomePage() {
           <CVUploadForm setIsAnalyzing={setIsAnalyzing} />
         </div>
 
-        {/* Security Notice */}
+        {/* Security Notice
         <div className="mt-16 text-center">
           <div className="inline-flex items-center gap-2 bg-green-50 text-green-800 px-6 py-3 rounded-lg border border-green-200">
             <Shield className="w-5 h-5" />
             <span className="font-medium">Your CV is not stored. Only analyzed for feedback.</span>
           </div>
-        </div>
+        </div> */}
 
         {/* How It Works */}
         <div className="mt-20">

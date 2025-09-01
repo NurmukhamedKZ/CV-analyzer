@@ -1,8 +1,11 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
+
 import uvicorn
+
 from dotenv import load_dotenv
+from database.model import init_db
 import os
 import signal
 
@@ -12,6 +15,9 @@ from routes.auth import router as auth_router
 
 # Load environment variables
 load_dotenv()
+
+# Initialize database (create tables)
+init_db()
 
 # Create FastAPI app
 app = FastAPI(

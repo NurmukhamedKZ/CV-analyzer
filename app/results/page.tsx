@@ -19,7 +19,7 @@ interface BackendCVAnalysisResult {
     issues: string[]
     suggestions: string[]
   }
-  improved_bullet_points: string[]
+  should_learn_technologys: string[]
   overall_score: number
   summary: string
   metadata?: {
@@ -44,7 +44,7 @@ interface CVAnalysisResult {
     issues: string[]
     suggestions: string[]
   }
-  improvedBulletPoints: string[]
+  shouldLearnTechnologys: string[]
   overallScore: number
   summary: string
   metadata?: {
@@ -70,7 +70,7 @@ function transformBackendData(backendData: BackendCVAnalysisResult): CVAnalysisR
       issues: backendData.ats_compatibility?.issues || [],
       suggestions: backendData.ats_compatibility?.suggestions || []
     },
-    improvedBulletPoints: backendData.improved_bullet_points || [],
+    shouldLearnTechnologys: backendData.should_learn_technologys || [],
     overallScore: backendData.overall_score || 0,
     summary: backendData.summary || '',
     metadata: backendData.metadata ? {
@@ -319,13 +319,13 @@ export default function ResultsPage() {
               <div className="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center">
                 <Star className="w-5 h-5 text-yellow-600" />
               </div>
-              <h2 className="text-xl font-semibold text-gray-900">Improved Bullet Points</h2>
+              <h2 className="text-xl font-semibold text-gray-900">You should leant technologys</h2>
             </div>
             
             <div className="space-y-3">
-              {result.improvedBulletPoints.map((bulletPoint, index) => (
+              {result.shouldLearnTechnologys.map((tech, index) => (
                 <div key={index} className="p-3 bg-yellow-50 rounded-lg border-l-4 border-yellow-400">
-                  <p className="text-sm text-gray-700">{bulletPoint}</p>
+                  <p className="text-sm text-gray-700">{tech}</p>
                 </div>
               ))}
             </div>

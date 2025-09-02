@@ -24,7 +24,7 @@ class CVAnalysisResponse(BaseModel):
     grammar_suggestions: List[str] = Field(..., description="Grammar and clarity improvement suggestions")
     keyword_match: KeywordMatch = Field(..., description="Keyword matching analysis")
     ats_compatibility: ATSCompatibility = Field(..., description="ATS compatibility analysis")
-    improved_bullet_points: List[str] = Field(..., description="Improved bullet point examples")
+    should_learn_technologys: List[str] = Field(..., description="should_learn_technologys examples")
     overall_score: int = Field(..., ge=0, le=100, description="Overall CV score")
     summary: str = Field(..., description="Summary of the analysis")
     metadata: Optional[Dict[str, Any]] = Field(None, description="Additional metadata about the analysis")

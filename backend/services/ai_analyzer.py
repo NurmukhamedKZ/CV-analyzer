@@ -58,7 +58,9 @@ class AIAnalyzer:
                 messages=[
                     {
                         "role": "system",
-                        "content": "You are an expert CV/resume analyst and career coach. Provide detailed, actionable feedback in the exact JSON format requested."
+                        "content": """You are an expert CV/resume analyst and career coach. 
+                        analyse headhunter, linkedin, and another sites to find patterns in job requirements and keywords, 
+                        Provide detailed, actionable feedback in the exact JSON format requested."""
                     },
                     {"role": "user", "content": prompt}
                 ],
@@ -168,7 +170,7 @@ Please provide analysis in this exact JSON format:
     "issues": ["issue1", "issue2"],
     "suggestions": ["suggestion1", "suggestion2"]
   }},
-  "improved_bullet_points": ["improved bullet 1", "improved bullet 2"],
+  "should_learn_technologys": ["technology 1", "technology 2"],
   "overall_score": 78,
   "summary": "Brief summary of the analysis"
 }}
@@ -178,7 +180,7 @@ Focus on:
 - Keyword matching between CV and job description
 - ATS (Applicant Tracking System) compatibility issues
 - Actionable improvement suggestions
-- Professional bullet point rewrites
+- Write technologys that user should learn based on CV text to get a job
 - Overall score based on all factors
 
 Be specific and actionable in your feedback. Ensure the response is valid JSON."""
@@ -188,7 +190,7 @@ Be specific and actionable in your feedback. Ensure the response is valid JSON."
         # Ensure all required fields are present
         required_fields = [
             "grammar_suggestions", "keyword_match", "ats_compatibility",
-            "improved_bullet_points", "overall_score", "summary"
+            "should_learn_technologys", "overall_score", "summary"
         ]
         
         for field in required_fields:
@@ -200,8 +202,8 @@ Be specific and actionable in your feedback. Ensure the response is valid JSON."
                     result[field] = {"matched": [], "missing": [], "score": 0}
                 elif field == "ats_compatibility":
                     result[field] = {"score": 0, "issues": [], "suggestions": []}
-                elif field == "improved_bullet_points":
-                    result[field] = ["No improved bullet points available"]
+                elif field == "should_learn_technologys":
+                    result[field] = ["No should_learn_technologys available"]
                 elif field == "overall_score":
                     result[field] = 0
                 elif field == "summary":

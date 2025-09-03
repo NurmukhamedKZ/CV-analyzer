@@ -9,11 +9,11 @@ export default function LoginPage() {
       
       <main className="container mx-auto px-4 py-12">
         <div className="max-w-md mx-auto">
-          <h1 className="text-3xl font-bold text-gray-900 text-center mb-8">
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-white text-center mb-8">
             Welcome Back
           </h1>
           
-          <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-8">
+          <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700 p-8">
             <LoginForm />
           </div>
         </div>

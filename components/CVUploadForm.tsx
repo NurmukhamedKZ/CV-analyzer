@@ -93,16 +93,16 @@ export default function CVUploadForm({ setIsAnalyzing }: CVUploadFormProps) {
   }
 
   return (
-    <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-8">
+    <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700 p-8">
       <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold text-gray-900 mb-2">Analyze Your CV</h2>
-        <p className="text-gray-600">Upload your CV and paste the job description for AI-powered analysis</p>
+        <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Analyze Your CV</h2>
+        <p className="text-gray-600 dark:text-gray-300">Upload your CV and paste the job description for AI-powered analysis</p>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* CV Upload */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-3">
+          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
             Upload Your CV
           </label>
           
@@ -111,27 +111,27 @@ export default function CVUploadForm({ setIsAnalyzing }: CVUploadFormProps) {
               {...getRootProps()}
               className={`border-2 border-dashed rounded-lg p-8 text-center cursor-pointer transition-colors ${
                 isDragActive
-                  ? 'border-blue-500 bg-blue-50'
-                  : 'border-gray-300 hover:border-gray-400'
+                  ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20'
+                  : 'border-gray-300 dark:border-gray-600 hover:border-gray-400 dark:hover:border-gray-500'
               }`}
             >
               <input {...getInputProps()} />
-              <Upload className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-              <p className="text-lg font-medium text-gray-900 mb-2">
+              <Upload className="w-12 h-12 text-gray-400 dark:text-gray-500 mx-auto mb-4" />
+              <p className="text-lg font-medium text-gray-900 dark:text-white mb-2">
                 {isDragActive ? 'Drop your CV here' : 'Click to upload or drag and drop'}
               </p>
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-gray-500 dark:text-gray-400">
                 Supports PDF, DOCX, and DOC files (max 10MB)
               </p>
             </div>
           ) : (
-            <div className="border border-gray-200 rounded-lg p-4 bg-gray-50">
+            <div className="border border-gray-200 dark:border-gray-600 rounded-lg p-4 bg-gray-50 dark:bg-gray-700">
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-3">
-                  <FileText className="w-8 h-8 text-blue-600" />
+                  <FileText className="w-8 h-8 text-blue-600 dark:text-blue-400" />
                   <div>
-                    <p className="font-medium text-gray-900">{cvFile.name}</p>
-                    <p className="text-sm text-gray-500">
+                    <p className="font-medium text-gray-900 dark:text-white">{cvFile.name}</p>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">
                       {(cvFile.size / 1024 / 1024).toFixed(2)} MB
                     </p>
                   </div>
@@ -139,7 +139,7 @@ export default function CVUploadForm({ setIsAnalyzing }: CVUploadFormProps) {
                 <button
                   type="button"
                   onClick={removeFile}
-                  className="p-2 text-gray-400 hover:text-red-500 transition-colors"
+                  className="p-2 text-gray-400 dark:text-gray-500 hover:text-red-500 dark:hover:text-red-400 transition-colors"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -150,7 +150,7 @@ export default function CVUploadForm({ setIsAnalyzing }: CVUploadFormProps) {
 
         {/* Job Description */}
         <div>
-          <label htmlFor="jobDescription" className="block text-sm font-medium text-gray-700 mb-3">
+          <label htmlFor="jobDescription" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
             Job Description
           </label>
           <textarea
@@ -158,7 +158,7 @@ export default function CVUploadForm({ setIsAnalyzing }: CVUploadFormProps) {
             value={jobDescription}
             onChange={(e) => setJobDescription(e.target.value)}
             placeholder="Paste the job description you're applying for here..."
-            className="w-full h-32 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
+            className="w-full h-32 px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
             required
           />
         </div>
@@ -180,7 +180,7 @@ export default function CVUploadForm({ setIsAnalyzing }: CVUploadFormProps) {
         </button>
 
         {/* Disclaimer */}
-        <p className="text-xs text-gray-500 text-center">
+        <p className="text-xs text-gray-500 dark:text-gray-400 text-center">
           By uploading your CV, you agree that it will be processed for analysis purposes only.
         </p>
       </form>

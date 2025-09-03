@@ -9,17 +9,17 @@ export default function PricingPage() {
       
       <main className="container mx-auto px-4 py-12">
         <div className="text-center mb-16">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Simple, Transparent Pricing</h1>
-          <p className="text-xl text-gray-600">Choose the plan that fits your needs</p>
+          <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">Simple, Transparent Pricing</h1>
+          <p className="text-xl text-gray-600 dark:text-gray-300">Choose the plan that fits your needs</p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {/* Free Plan */}
-          <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-8">
+          <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 p-8">
             <div className="text-center mb-6">
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">Free</h3>
-              <div className="text-4xl font-bold text-gray-900 mb-2">$0</div>
-              <p className="text-gray-600">Perfect for trying out</p>
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Free</h3>
+              <div className="text-4xl font-bold text-gray-900 dark:text-white mb-2">$0</div>
+              <p className="text-gray-600 dark:text-gray-300">Perfect for trying out</p>
             </div>
             
             <ul className="space-y-3 mb-8">
@@ -43,7 +43,7 @@ export default function PricingPage() {
           </div>
 
           {/* Pro Plan */}
-          <div className="bg-white rounded-2xl shadow-xl border-2 border-blue-500 p-8 relative">
+          <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl border-2 border-blue-500 p-8 relative">
             <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
               <div className="bg-blue-500 text-white px-4 py-2 rounded-full text-sm font-semibold flex items-center space-x-1">
                 <Star className="w-4 h-4" />
@@ -52,9 +52,9 @@ export default function PricingPage() {
             </div>
             
             <div className="text-center mb-6">
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">Pro</h3>
-              <div className="text-4xl font-bold text-gray-900 mb-2">$3</div>
-              <p className="text-gray-600">per month</p>
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Pro</h3>
+              <div className="text-4xl font-bold text-gray-900 dark:text-white mb-2">$3</div>
+              <p className="text-gray-600 dark:text-gray-300">per month</p>
             </div>
             
             <ul className="space-y-3 mb-8">
@@ -86,11 +86,11 @@ export default function PricingPage() {
           </div>
 
           {/* Enterprise Plan */}
-          <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-8">
+          <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 p-8">
             <div className="text-center mb-6">
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">Enterprise</h3>
-              <div className="text-4xl font-bold text-gray-900 mb-2">Custom</div>
-              <p className="text-gray-600">For teams & organizations</p>
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Enterprise</h3>
+              <div className="text-4xl font-bold text-gray-900 dark:text-white mb-2">Custom</div>
+              <p className="text-gray-600 dark:text-gray-300">For teams & organizations</p>
             </div>
             
             <ul className="space-y-3 mb-8">
@@ -124,21 +124,21 @@ export default function PricingPage() {
 
         {/* FAQ Section */}
         <div className="mt-20">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">Frequently Asked Questions</h2>
+          <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-12">Frequently Asked Questions</h2>
           <div className="max-w-3xl mx-auto space-y-6">
-            <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-100">
-              <h3 className="font-semibold text-gray-900 mb-2">How accurate is the AI analysis?</h3>
-              <p className="text-gray-600">Our AI uses advanced GPT-4 technology to provide highly accurate and actionable feedback on your CV.</p>
+            <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm border border-gray-100 dark:border-gray-700">
+              <h3 className="font-semibold text-gray-900 dark:text-white mb-2">How accurate is the AI analysis?</h3>
+              <p className="text-gray-600 dark:text-gray-300">Our AI uses advanced GPT-4 technology to provide highly accurate and actionable feedback on your CV.</p>
             </div>
             
-            <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-100">
-              <h3 className="font-semibold text-gray-900 mb-2">Can I cancel my subscription anytime?</h3>
-              <p className="text-gray-600">Yes, you can cancel your subscription at any time. No long-term contracts or hidden fees.</p>
+            <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm border border-gray-100 dark:border-gray-700">
+              <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Can I cancel my subscription anytime?</h3>
+              <p className="text-gray-600 dark:text-gray-300">Yes, you can cancel your subscription at any time. No long-term contracts or hidden fees.</p>
             </div>
             
-            <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-100">
-              <h3 className="font-semibold text-gray-900 mb-2">What file formats do you support?</h3>
-              <p className="text-gray-600">We support PDF, DOCX, and DOC files up to 10MB in size.</p>
+            <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm border border-gray-100 dark:border-gray-700">
+              <h3 className="font-semibold text-gray-900 dark:text-white mb-2">What file formats do you support?</h3>
+              <p className="text-gray-600 dark:text-gray-300">We support PDF, DOCX, and DOC files up to 10MB in size.</p>
             </div>
           </div>
         </div>

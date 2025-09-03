@@ -60,6 +60,7 @@ class AIAnalyzer:
                         "role": "system",
                         "content": """You are an expert CV/resume analyst and career coach. 
                         analyse headhunter, linkedin, and another sites to find patterns in job requirements and keywords, 
+                        don't care about bad text extraction, for example if you see "da ta analy sis" instead of "data analysis" just consider it as "data analysis"
                         Provide detailed, actionable feedback in the exact JSON format requested."""
                     },
                     {"role": "user", "content": prompt}

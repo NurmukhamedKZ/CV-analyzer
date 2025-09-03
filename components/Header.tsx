@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { Menu, X, User } from 'lucide-react'
 import { useAuth, useUser, SignInButton, UserButton } from '@clerk/nextjs'
+import { DarkModeToggle } from './DarkModeToggle'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -11,35 +12,40 @@ export default function Header() {
   const { user } = useUser()
 
   return (
-    <header className="bg-white shadow-sm border-b border-gray-100">
+    <header className="bg-white dark:bg-gray-900 shadow-sm border-b border-gray-100 dark:border-gray-800">
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-lg">AI</span>
-            </div>
-            <span className="text-xl font-bold text-gray-900">CV Checker</span>
-          </Link>
+          <div className="flex-shrink-0">
+            <Link href="/" className="flex items-center space-x-2">
+              <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-lg">CV</span>
+              </div>
+              <span className="text-xl font-bold text-gray-900 dark:text-white">lytics</span>
+            </Link>
+          </div>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            <Link href="/" className="text-gray-600 hover:text-blue-600 transition-colors">
-              Home
-            </Link>
-            <Link href="/about" className="text-gray-600 hover:text-blue-600 transition-colors">
-              About
-            </Link>
-            <Link href="/pricing" className="text-gray-600 hover:text-blue-600 transition-colors">
-              Pricing
-            </Link>
+          {/* Desktop Navigation - Centered */}
+          <nav className="hidden md:flex items-center justify-center flex-1">
+            <div className="flex items-center space-x-8">
+              <Link href="/" className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                Home
+              </Link>
+              <Link href="/about" className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                About
+              </Link>
+              <Link href="/pricing" className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                Pricing
+              </Link>
+            </div>
           </nav>
 
           {/* Auth Buttons */}
-          <div className="hidden md:flex items-center space-x-4">
+          <div className="hidden md:flex items-center space-x-4 flex-shrink-0">
+            {/* <DarkModeToggle /> */}
             {isSignedIn ? (
               <div className="flex items-center space-x-4">
-                <span className="text-gray-700">
+                <span className="text-gray-700 dark:text-gray-300">
                   Welcome, {user?.firstName || user?.emailAddresses[0].emailAddress}
                 </span>
                 <UserButton 
@@ -55,7 +61,7 @@ export default function Header() {
             ) : (
               <>
                 <SignInButton mode="modal">
-                  <button className="flex items-center space-x-2 text-gray-600 hover:text-blue-600 transition-colors">
+                  <button className="flex items-center space-x-2 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                     <User className="w-4 h-4" />
                     <span>Sign In</span>
                   </button>
@@ -76,30 +82,34 @@ export default function Header() {
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? (
-              <X className="w-6 h-6 text-gray-600" />
+              <X className="w-6 h-6 text-gray-600 dark:text-gray-300" />
             ) : (
-              <Menu className="w-6 h-6 text-gray-600" />
+              <Menu className="w-6 h-6 text-gray-600 dark:text-gray-300" />
             )}
           </button>
         </div>
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-gray-100">
+          <div className="md:hidden py-4 border-t border-gray-100 dark:border-gray-800">
             <nav className="flex flex-col space-y-4">
-              <Link href="/" className="text-gray-600 hover:text-blue-600 transition-colors">
+              <Link href="/" className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                 Home
               </Link>
-              <Link href="/about" className="text-gray-600 hover:text-blue-600 transition-colors">
+              <Link href="/about" className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                 About
               </Link>
-              <Link href="/pricing" className="text-gray-600 hover:text-blue-600 transition-colors">
+              <Link href="/pricing" className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                 Pricing
               </Link>
-              <div className="pt-4 border-t border-gray-100">
+              {/* <div className="flex items-center justify-between py-2">
+                <span className="text-gray-600 dark:text-gray-300">Theme</span>
+                <DarkModeToggle />
+              </div> */}
+              <div className="pt-4 border-t border-gray-100 dark:border-gray-800">
                 {isSignedIn ? (
                   <div className="flex items-center justify-between">
-                    <span className="text-gray-700 text-sm">
+                    <span className="text-gray-700 dark:text-gray-300 text-sm">
                       {user?.firstName || user?.emailAddresses[0].emailAddress}
                     </span>
                     <UserButton 
@@ -113,7 +123,7 @@ export default function Header() {
                 ) : (
                   <>
                     <SignInButton mode="modal">
-                      <button className="flex items-center space-x-2 text-gray-600 hover:text-blue-600 transition-colors mb-2 w-full">
+                      <button className="flex items-center space-x-2 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors mb-2 w-full">
                         <User className="w-4 h-4" />
                         <span>Sign In</span>
                       </button>

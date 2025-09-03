@@ -12,6 +12,8 @@ import signal
 # Import routers
 from routes.cv_analysis import router as cv_router
 from routes.auth import router as auth_router
+from routes.webhooks import router as webhook_router
+from routes.users import router as users_router
 
 # Load environment variables
 load_dotenv()
@@ -40,6 +42,8 @@ app.add_middleware(
 # Include routers
 app.include_router(cv_router, prefix="/api", tags=["CV Analysis"])
 app.include_router(auth_router, prefix="/api", tags=["Authentication"])
+app.include_router(webhook_router, prefix="/webhooks", tags=["Webhooks"])
+app.include_router(users_router, prefix="/api/users", tags=["Users"])
 
 # Health check endpoint
 @app.get("/")

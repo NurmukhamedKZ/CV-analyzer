@@ -4,6 +4,7 @@ import { useState, useCallback } from 'react'
 import { useDropzone } from 'react-dropzone'
 import { Upload, FileText, X, Loader2 } from 'lucide-react'
 import { useRouter } from 'next/navigation'
+import { useAuth } from '@clerk/nextjs'
 
 interface CVUploadFormProps {
   setIsAnalyzing: (value: boolean) => void
@@ -14,6 +15,7 @@ export default function CVUploadForm({ setIsAnalyzing }: CVUploadFormProps) {
   const [jobDescription, setJobDescription] = useState('')
   const [isUploading, setIsUploading] = useState(false)
   const router = useRouter()
+  const { getToken, isSignedIn } = useAuth()
 
   const onDrop = useCallback((acceptedFiles: File[]) => {
     if (acceptedFiles.length > 0) {
@@ -38,6 +40,11 @@ export default function CVUploadForm({ setIsAnalyzing }: CVUploadFormProps) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     
+    if (!isSignedIn) {
+      alert('Please sign in to analyze your CV')
+      return
+    }
+    
     if (!cvFile || !jobDescription.trim()) {
       alert('Please upload a CV and enter a job description')
       return
@@ -47,12 +54,18 @@ export default function CVUploadForm({ setIsAnalyzing }: CVUploadFormProps) {
     setIsAnalyzing(true)
 
     try {
+      // Get authentication token
+      const token = await getToken()
+      
       const formData = new FormData()
       formData.append('cv', cvFile)
       formData.append('jobDescription', jobDescription)
 
       const response = await fetch('/api/analyze-cv', {
         method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+        },
         body: formData,
       })
 

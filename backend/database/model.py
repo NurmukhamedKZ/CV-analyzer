@@ -10,10 +10,12 @@ engine = create_engine(DATABASE_URL, echo=False)
 
 class User(SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
-    email: str
-    first_name: str
-    last_name: str
-    hashed_password: Optional[str] = None
+    clerk_user_id: str = Field(unique=True, index=True)  # Clerk's unique user ID
+    email: str = Field(unique=True, index=True)
+    first_name: Optional[str] = None
+    last_name: Optional[str] = None
+    profile_image_url: Optional[str] = None
+    hashed_password: Optional[str] = None  # Keep for backward compatibility
     is_active: bool = True
     created_at: datetime = Field(default_factory=datetime.utcnow)
     updated_at: Optional[datetime] = None

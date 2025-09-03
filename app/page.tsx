@@ -2,12 +2,14 @@
 
 import { useState } from 'react'
 import { Upload, FileText, Briefcase, Sparkles, Shield, CheckCircle } from 'lucide-react'
+import { useAuth } from '@clerk/nextjs'
 import CVUploadForm from '@/components/CVUploadForm'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 
 export default function HomePage() {
   const [isAnalyzing, setIsAnalyzing] = useState(false)
+  const { isSignedIn } = useAuth()
 
   return (
     <div className="min-h-screen">
@@ -32,7 +34,9 @@ export default function HomePage() {
           {/* Free Scan Banner */}
           <div className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-8 py-4 rounded-full inline-flex items-center gap-2 mb-8">
             <CheckCircle className="w-5 h-5" />
-            <span className="font-semibold">Free 1 Scan / Login for Unlimited</span>
+            <span className="font-semibold">
+              {isSignedIn ? 'Unlimited CV Analysis' : 'Sign up for Unlimited Access'}
+            </span>
           </div>
         </div>
 
